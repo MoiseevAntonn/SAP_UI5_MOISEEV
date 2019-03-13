@@ -1,0 +1,100 @@
+<mvc:View
+	controllerName="sap.ui.task.controller.RegistrationForm"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form">
+	
+	<Page
+	title="{i18n>regPageTitle}"
+	showNavButton="true"
+    navButtonPress="onNavBack">
+    	<content>
+			<f:Form id="RegForm" editable="true">
+				<f:layout>
+						<f:ResponsiveGridLayout
+							labelSpanXL="4"
+							labelSpanL="3"
+							labelSpanM="4"
+							labelSpanS="12"
+							adjustLabelSpan="false"
+							emptySpanXL="0"
+							emptySpanL="4"
+							emptySpanM="0"
+							emptySpanS="0"
+							columnsXL="2"
+							columnsL="1"
+							columnsM="1"
+							singleContainerFullSize="false" />
+				</f:layout>
+				<f:FormContainer>
+						<f:FormElement label="ФИО">
+							<f:fields>
+								<Input placeholder="Имя пользователя" id="firstName" value="{userFirstName}">
+									<layoutData>
+										<l:GridData span="XL1 L2 M9 S12"/>
+									</layoutData>
+								</Input>
+								<Input placeholder="Фамилия пользователя" id="secondName" value="{userSecondName}">
+									<layoutData>
+										<l:GridData span="XL1 L2 M9 S12" />
+									</layoutData>
+								</Input>
+								<Input placeholder="Отчество пользователя" id="middleName" value="{userMiddleName}">
+									<layoutData>
+										<l:GridData span="XL1 L2 M9 S12" />
+									</layoutData>
+								</Input>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Пол">
+							<f:fields>
+								<RadioButton groupName="GroupSex" text="Муж." selected="true" />
+								<RadioButton groupName="GroupSex" text="Жен." />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Email">
+							<f:fields>
+								<Input placeholder="Email" id="email" value="{userEmail}" type="Email"/>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Адрес">
+							<f:fields>
+								<Select id="country" selectedKey="{Country}">
+									<items>
+										<core:Item text="Россия" key="Russia"/>
+										<core:Item text="England" key="England"/>
+										<core:Item text="Germany" key="Germany"/>
+										<core:Item text="USA" key="USA"/>
+									</items>
+								</Select>
+								<Input value="{Street}" id="street" placeholder="Улица">
+									<layoutData>
+										<l:GridData span="XL1 L2 M2 S4" />
+									</layoutData>
+								</Input>
+								<Input value="{HouseNumber}" id="HouseNumber" placeholder="Номер дома">
+									
+								</Input>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Телефон">
+							<f:fields>
+								<Input placeholder="Телефон" id="phoneNumber" value="{userPhoneNumber}" type="Number"/>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="О себе">
+							<f:fields>
+								<!-- <Input placeholder="Напишите о себе что нибудь" id="aboutMe" value="{userAboutMe}" type="Text"/> -->
+								<TextArea value="" maxLength="200" placeholder="Напишите что нибудь о себе"/>
+							</f:fields>
+						</f:FormElement>
+						
+						
+					
+				</f:FormContainer>
+			</f:Form>  
+		</content>
+	</Page>
+</mvc:View>

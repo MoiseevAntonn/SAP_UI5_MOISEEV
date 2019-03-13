@@ -1,0 +1,115 @@
+<mvc:View
+	controllerName="sap.ui.demo.walkthrough.controller.Table"
+	xmlns="sap.m"
+	xmlns:t="sap.ui.table"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	busyIndicatorDelay="0">
+	
+	<Toolbar>
+		<Title text="Kuku"/>
+		<ToolbarSpacer/>
+		<SearchField width="50%" search="onFilterTable"/>
+	</Toolbar>
+	
+	<t:Table
+		visibleRowCount="{= ${local>/Invoices}.length}"
+		rows="{local>/Invoices}"
+		title="Categories"
+		selectionMode="None">
+		<t:columns>
+			<t:Column>
+				<Label text="Category ID"/>
+				<t:template>
+					<Text text="{local>CategoryID}"/>
+				</t:template>
+			</t:Column>
+			<t:Column>
+				<Label text="Category Name"/>
+				<t:template>
+					<Text text="{local>CategoryName}"/>
+				</t:template>
+			</t:Column>
+			<t:Column>
+				<Label text="Description"/>
+				<t:template>
+					<Text text="{local>Description}"/>
+				</t:template>
+			</t:Column>
+			<t:Column>
+				<Label text="Products"/>
+				<t:template>
+					<Text text="{local>Description}"/>
+					<Select
+						width="100%"
+						items="{local>Products/results}">
+						<core:Item 
+							key="{local>ProductId}" 
+							text="{local>ProductName}"/>
+					</Select>
+				</t:template>
+			</t:Column>
+		
+		
+		</t:columns>
+	</t:Table>
+		
+	<Table id="firstTable"
+		items="{
+			path: 'local>/Invoices',
+			sorter: {
+				path: 'ProductName'
+			}
+		}">
+		
+		<columns>
+			<!-- <Column>
+				<Text text="ProductName"/>
+			</Column>
+			<Column>
+				<Text text="Quantity"/>
+			</Column>
+			<Column>
+				<Text text="ShipperName"/>
+			</Column> -->
+			<Column>
+				<Text text="CategoryID"/>
+			</Column>
+			<Column>
+				<Text text="CategoryName"/>
+			</Column>
+			<Column>
+				<Text text="Description"/>
+			</Column>
+			<Column>
+				<Text text="Products"/>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<!-- 
+					<Text text="{local>ProductName}"/> 
+					<Text text="{local>Quantity}"/>
+					<Text text="{local>ShipperName}"/> -->
+					
+					<Text text="{local>CategoryID}"/> 
+					<Text text="{local>CategoryName}"/>
+					<Text text="{local>Description}"/>
+					
+					<Select
+						width="100%"
+						items="{
+							path: 'local>Products/results'
+						}">
+						<core:Item 
+							key="{local>ProductId}" 
+							text="{local>ProductName}"/>
+					</Select>
+				
+				</cells>
+			</ColumnListItem>
+		</items>
+		
+	</Table>
+</mvc:View>

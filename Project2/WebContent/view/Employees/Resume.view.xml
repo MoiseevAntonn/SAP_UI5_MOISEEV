@@ -1,0 +1,33 @@
+<mvc:View
+	controllerName="sap.ui.task.controller.Employees.Resume"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
+	<Page
+		title="{i18n>ResumeOf} {invoice>FirstName} {invoice>LastName}"
+		id="employeeResumePage"
+		showNavButton="true"
+		navButtonPress=".onNavBack">
+		<content>
+			<IconTabBar
+				id="iconTabBar"
+				headerBackgroundDesign="Transparent"
+				class="sapUiResponsiveContentPadding"
+				binding="{invoice>/Orders}">
+				<items>
+					<IconTabFilter id="infoTab" text="{i18n>tabInfo}" key="invoice>ShipAddress">
+						<Text text="{invoice>ShipAddress}"/>
+					</IconTabFilter>
+					<IconTabFilter id="projectsTab" text="{i18n>tabProjects}" key="invoice>Projects">
+						<mvc:XMLView viewName="sap.ui.task.view.Employees.ResumeProjects"></mvc:XMLView>
+					</IconTabFilter>
+					<IconTabFilter id="hobbiesTab" text="{i18n>tabHobbies}" key="invoice>Hobbies">
+						<Text text="{invoice>Hobbies}"/>
+					</IconTabFilter>
+					<IconTabFilter id="notesTab" text="{i18n>tabNotes}" key="invoice>Notes">
+						<Text text="{invoice>Notes}"/>
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</content>
+	</Page>
+</mvc:View>

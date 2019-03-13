@@ -1,0 +1,37 @@
+<mvc:View
+	controllerName="sap.ui.task.controller.Employees.EmployeeList"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
+	<Page
+	title="{i18n>invPageTitle}"
+	showNavButton="true"
+    navButtonPress="onNavBack">
+    	<content>
+			<List
+				id="invoiceList"	
+				class="sapUiResponsiveMargin"
+				width="auto"
+				items="{
+					path:'invoice>/Employees'
+					}">
+				
+				<headerToolbar> 
+					<Toolbar>
+						<Title text="{i18n>invoiceListTitle}"/>
+						<ToolbarSpacer/>
+					</Toolbar>
+				</headerToolbar> 
+				
+				<items>
+					<StandardListItem
+						title="{invoice>FirstName} {invoice>LastName}"
+						iconDensityAware="false"
+						iconInset="false"
+						type="Navigation"
+						press=".onListItemPressed"/>
+
+				</items>
+			</List>
+		</content>
+	</Page>
+</mvc:View>

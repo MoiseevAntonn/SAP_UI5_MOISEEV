@@ -1,0 +1,51 @@
+<mvc:View
+	controllerName="sap.ui.demo.walkthrough.controller.Table"
+	xmlns="sap.ui.table"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:m="sap.m">
+	
+	<Table
+		rows="{local>/Invoices}"
+		title="Categories"
+		selectionMode="None">
+		<columns>
+			<Column>
+				<m:Label text="Category ID"/>
+				<template>
+					<m:Text text="{local>CategoryID}"/>
+				</template>
+			</Column>
+			<Column>
+				<m:Label text="Category Name"/>
+				<template>
+					<m:Text text="{local>CategoryName}"/>
+				</template>
+			</Column>
+			<Column>
+				<m:Label text="Description"/>
+				<template>
+					<m:Text text="{local>Description}"/>
+				</template>
+			</Column>
+			<Column>
+				<m:Label text="Products"/>
+				<template>
+					<m:Text text="{local>Description}"/>
+					<m:Select
+						width="100%"
+						items="{local>Products/results}">
+						<core:Item 
+							key="{local>ProductId}" 
+							text="{local>ProductName}"/>
+					</m:Select>
+				</template>
+			</Column>
+		
+		
+		</columns>
+	</Table>
+		
+	
+	
+</mvc:View>
