@@ -99,6 +99,14 @@
          	"pattern": "employees/{employeeID}/resume",
          	"name": "appEmployeeResume",
          	"target":"employeeResume"
+         },{
+         	"pattern": "dataBinding",
+         	"name": "appDataBinding",
+         	"target":"dataBinding"
+         },{
+         	"pattern":"factFunc",
+         	"name": "appFactFunc",
+         	"target":"factFunc"
          }],
          "targets": {
             "home": {
@@ -154,8 +162,19 @@
 				"viewName": "EmployeeOverviewContent",
 				"controlId": "EmployeeOverviewParent",
 				"controlAggregation": "content"
+            },
+            "dataBinding":{
+				"viewId":"dataBinding",
+				"viewPath":"sap.ui.task.view.DataBinding",
+				"viewName":"DataBinding",
+				"viewLevel":2            
+            },
+            "factFunc":{
+            	"viewId":"factFunc",
+				"viewPath":"sap.ui.task.view.FactFunc",
+				"viewName":"FactFunc",
+				"viewLevel":2  
             }
-            
          }
       },
       

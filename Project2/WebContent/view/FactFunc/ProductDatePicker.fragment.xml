@@ -1,0 +1,14 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<CustomListItem
+		id="productDatePicker"
+		class="sapUiResponsiveMargin">
+		<DatePicker
+			id="DP1"
+			placeholder="{localProducts>ProductName}"
+			change="handleChange"
+			/>
+	</CustomListItem>
+	
+</core:FragmentDefinition>

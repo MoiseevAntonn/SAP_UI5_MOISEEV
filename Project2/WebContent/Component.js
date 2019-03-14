@@ -18,6 +18,36 @@ sap.ui.define([
 			}
 			var localModel = new JSONModel(dataStructure);
 			this.setModel(localModel,"pathModel");
+			
+			
+			//Data binding tutorial 
+			var oProductModel = new JSONModel();
+			oProductModel.loadData("./model/Products.json");
+			this.setModel(oProductModel,"products");
+			
+			
+			var oModel1 = new JSONModel({
+				firstName: "Harry",
+				lastName: "Hawk",
+				enabled: true,
+				address: {
+					street: "Dietmar-Hopp-Allee 16",
+					city: "Walldorf",
+					zip: "69190",
+					country: "Germany"
+				},
+				"salesToDate" : 12345.6789,
+				"currencyCode" : "EUR",
+				"priceThreshold": 20
+
+			});
+			//oModel1.setDefaultBindingMode(BindingMode.OneWay);
+			this.setModel(oModel1,"tutorial");
+			sap.ui.getCore().getMessageManager().registerObject(this.getRootControl(),true);
+			
+			
+			
+			
 		}
 	});
 });

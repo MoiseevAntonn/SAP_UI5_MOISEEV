@@ -1,0 +1,14 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<CustomListItem
+		id="productSelect"
+		class="sapUiResponsiveMargin">
+		<Select id="country" selectedKey="{localProducts>ProductName}">
+			<items>
+				<core:Item text="{localProducts>ProductName}" key="{localProducts>ProductName}"/>
+			</items>
+		</Select>
+	</CustomListItem>
+	
+</core:FragmentDefinition>

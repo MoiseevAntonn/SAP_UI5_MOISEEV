@@ -22,6 +22,12 @@ sap.ui.define([
 	   },
 	   onNavToEmployeeOverview : function(){
 		   this.getRouter().navTo("appEmployeeOverview")
+	   },
+	   onNavToDataBinding : function(){
+		   this.getRouter().navTo("appDataBinding");
+	   },
+	   onNavToFactFunc : function(){
+		   this.getRouter().navTo("appFactFunc");
 	   }
    });
 

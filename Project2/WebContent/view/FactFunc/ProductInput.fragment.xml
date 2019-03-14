@@ -1,0 +1,14 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout">
+	<CustomListItem
+		id="productInput"
+		class="sapUiResponsiveMargin">
+		
+		<Input value="{localProducts>ProductName}"/>
+			
+		
+	</CustomListItem>
+	
+</core:FragmentDefinition>

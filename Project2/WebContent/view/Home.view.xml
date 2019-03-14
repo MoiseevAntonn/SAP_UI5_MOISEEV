@@ -24,6 +24,14 @@
          	text="{i18n>ShowEmployeeOverview}" 
          	press=".onNavToEmployeeOverview" 
          	class="sapUiTinyMarginEnd"/>
+         <Button id="dataBindingBtn" 
+         	text="{i18n>ToDataBinding}" 
+         	press=".onNavToDataBinding" 
+         	class="sapUiTinyMarginEnd"/>
+         <Button id="factFuncBtn" 
+         	text="{i18n>ToFactFunc}" 
+         	press=".onNavToFactFunc" 
+         	class="sapUiTinyMarginEnd"/>
       </content>
    </Page>
 </mvc:View>

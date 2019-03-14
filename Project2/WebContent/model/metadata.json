@@ -1,0 +1,17 @@
+{
+	"metadata":[
+	{
+		"type" : "Text",
+		"limit" : 60
+	},{
+		"type" : "Select",
+		"limit" : 34
+	},{
+		"type" : "Input",
+		"limit" : 20
+	},{
+		"type" : "Date picker",
+		"limit" : 0
+	}]
+
+}
