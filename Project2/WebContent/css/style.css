@@ -1,0 +1,12 @@
+.disableScroll {	
+	height: calc(100% - 48px);
+}
+span[data-level="c"]{
+	
+}
+span[data-level="p"]{
+	margin-left:20px
+}
+span[data-level="s"]{
+	margin-left:40px
+}

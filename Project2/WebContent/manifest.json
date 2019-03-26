@@ -107,6 +107,10 @@
          	"pattern":"factFunc",
          	"name": "appFactFunc",
          	"target":"factFunc"
+         },{
+         	"pattern":"factFuncTable",
+         	"name": "appFactFuncTable",
+         	"target":"factFuncTable"
          }],
          "targets": {
             "home": {
@@ -173,6 +177,12 @@
             	"viewId":"factFunc",
 				"viewPath":"sap.ui.task.view.FactFunc",
 				"viewName":"FactFunc",
+				"viewLevel":2  
+            },
+            "factFuncTable":{
+            	"viewId":"factFuncTable",
+				"viewPath":"sap.ui.task.view.FactFuncTable",
+				"viewName":"FactFuncTable",
 				"viewLevel":2  
             }
          }

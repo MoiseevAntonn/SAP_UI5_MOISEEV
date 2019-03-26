@@ -1,0 +1,71 @@
+<mvc:View
+	controllerName="sap.ui.task.controller.FactFuncTable.FactFuncTable"
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns:t="sap.ui.table">
+	<Page
+		title="{i18n>FactFuncTableTitle}"
+		showNavButton="true"
+	    navButtonPress="onNavBack">
+    	<content>
+    	
+    		<IconTabBar
+				id="iconTabBar"
+				headerBackgroundDesign="Transparent"
+				class="sapUiResponsiveContentPadding">
+				<items>
+					<IconTabFilter 
+						id="tTable" 
+						text="table.Table" 
+						key="1">
+					
+						<t:Table
+					    	id="employeeTable1"
+							visibleRowCount="{= ${employees>/Employees}.length}"
+							rows="{employees>/Employees}"
+							title="{i18n>FactFuncTableTitle}"
+							selectionMode="None"/>		
+					</IconTabFilter>
+					
+					<IconTabFilter 
+						id="mTable" 
+						text="m Table"
+						key="2">
+						
+						<Table id="employeeTable2"/>		
+					</IconTabFilter>
+					
+					<IconTabFilter 
+						id="treeTable" 
+						text="Tree Table" 
+						key="3">
+						
+						<t:TreeTable
+				    		id="thirdTable"
+				    		rowHeight="49"
+				    		selectionMode="None"
+				    		enableSelectAll="false"
+			                ariaLabelledBy="title">
+			                <t:extension>
+			                	<Toolbar>
+			                		<Title text="Tree Table"/>
+			                	</Toolbar>
+			                </t:extension>
+			                <t:columns>
+			                	<t:Column>
+			                		<Label text="Categories"/>
+			                		<t:template>
+			                			<Text text="{thirdTableModel>name}" wrapping="false"/>
+			                		</t:template>
+			                	</t:Column>          
+			                </t:columns>						
+						</t:TreeTable>
+						
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</content>
+	</Page>
+</mvc:View>

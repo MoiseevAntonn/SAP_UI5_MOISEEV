@@ -1,0 +1,34 @@
+{
+	"columns" :[
+	{
+		"label" : "Photo",
+		"type": "img",
+		"field": "EmployeeID",
+		"width":"",
+		"hAlign":""
+	},{
+		"label" : "Fio",
+		"type": "text",
+		"field": "FirstName_LastName",
+		"width":"",
+		"hAlign":""
+	},{
+		"label" : "Adress",
+		"type": "card",
+		"field": "Address_City_Country",
+		"width":"",
+		"hAlign":""
+	},{
+		"label" : "Hired",
+		"type": "date",
+		"field": "HireDate",
+		"width":"",
+		"hAlign":""
+	},{
+		"label" : "Name",
+		"type": "text",
+		"field": "FirstName",
+		"width":"",
+		"hAlign":""
+	}] 
+}

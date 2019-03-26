@@ -34,7 +34,7 @@ sap.ui.define([
 			
 			var data = "1";
 			
-			testFile.test();
+			//testFile.test();
 			
 			this.getView().setModel(this.lclm,"local");
 			

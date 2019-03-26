@@ -1,37 +1,61 @@
 <mvc:View
    controllerName="sap.ui.task.controller.Home"
    xmlns="sap.m"
-   xmlns:mvc="sap.ui.core.mvc">
-   <Page title="{i18n>homePageTitle}" class="sapUiResponsiveContentPadding">
+   xmlns:mvc="sap.ui.core.mvc"
+   xmlns:core="sap.ui.core">
+   
+   <Page title="{i18n>homePageTitle}" class="sapUiResponsiveContentPadding" >
+   	  <headerContent>
+   	  <!-- 	<Toolbar>
+			<Title text="{i18n>ToolbarTitle}"/>
+			<ToolbarSpacer/>
+			<Select
+				id="selectLanguage"
+				forceSelection="true"
+				valueStateText="Set language"
+				>
+				<core:Item key="RUS" text="RUS" />
+				<core:Item key="ENG" text="ENG" />
+				
+			
+			</Select>
+		</Toolbar> -->
+	  </headerContent>
       <content>
-         <Button text="{i18n>iWantToNavigate}" class="sapUiTinyMarginEnd"/>
+        
+		
+		
          <Button 
          	id="displayNotFoundBtn" 
          	text="{i18n>DisplayNotFound}"
          	press=".onDisplayNotFound"
          	class="sapUiTinyMarginEnd"/>
-         <Button 
-         	id="navToRegFormBtn" 
-         	text="{i18n>navToRegForm}"
-         	press=".onNavToRegForm"
-         	class="sapUiTinyMarginEnd"/>
-         <Button 
-         	id="navToInvListBtn" 
-         	text="{i18n>navToInvList}"
-         	press=".onNavToInvList"
-         	class="sapUiTinyMarginEnd"/>
-         <Button id="employeeOverviewBtn" 
-         	text="{i18n>ShowEmployeeOverview}" 
-         	press=".onNavToEmployeeOverview" 
-         	class="sapUiTinyMarginEnd"/>
-         <Button id="dataBindingBtn" 
-         	text="{i18n>ToDataBinding}" 
-         	press=".onNavToDataBinding" 
-         	class="sapUiTinyMarginEnd"/>
-         <Button id="factFuncBtn" 
-         	text="{i18n>ToFactFunc}" 
-         	press=".onNavToFactFunc" 
-         	class="sapUiTinyMarginEnd"/>
+        
+         <List
+			id="buttonList"	
+			class="sapUiResponsiveMargin"
+			width="auto"
+			items="{
+				path:'metadataButtonList>/buttonList'
+				}">
+			
+			<headerToolbar> 
+				<Toolbar>
+					<Title text="{i18n>ButtonListTitle}"/>
+					<ToolbarSpacer/>
+				</Toolbar>
+			</headerToolbar> 
+			
+			<items>
+				<StandardListItem
+					title="{metadataButtonList>label} "
+					iconDensityAware="false"
+					iconInset="false"
+					type="Navigation"
+					press=".onListItemPressed"/>
+
+			</items>
+		</List>
       </content>
    </Page>
 </mvc:View>

@@ -1,0 +1,41 @@
+{
+	"buttonList":[
+	
+	{
+		"id":"onNavToRegForm",
+		"label":"To registration form",
+		"route":"appRegistrationForm",
+		"description":""
+	},
+	{
+		"id":"onNavToInvList",
+		"label":"To employee list",
+		"route":"appEmployees",
+		"description":""
+	},
+	{
+		"id":"onNavToEmployeeOverview",
+		"label":"To employee overview",
+		"route":"appEmployeeOverview",
+		"description":""
+	},
+	{
+		"id":"onNavToDataBinding",
+		"label":"To data binding task",
+		"route":"appDataBinding",
+		"description":""
+	},
+	{
+		"id":"onNavToFactFunc",
+		"label":"To factory function task",
+		"route":"appFactFunc",
+		"description":""
+	},
+	{
+		"id":"onNavToFactFuncTable",
+		"label":"To dinamic table task",
+		"route":"appFactFuncTable",
+		"description":""
+	}
+	]
+}
