@@ -1,0 +1,52 @@
+{"data" : {
+		"employees" : null,
+		"categories" : null
+		},
+	"metadata" : {
+		"commonTable" : [
+			{
+				"label" : "Photo",
+				"type": "img",
+				"field": "EmployeeID",
+				"width":"",
+				"hAlign":""
+				},{
+				"label" : "Fio",
+				"type": "text",
+				"field": "FirstName_LastName",
+				"width":"",
+				"hAlign":""
+				},{
+				"label" : "Adress",
+				"type": "card",
+				"field": "Address_City_Country",
+				"width":"",
+				"hAlign":""
+				},{
+				"label" : "Hired",
+				"type": "date",
+				"field": "HireDate",
+				"width":"",
+				"hAlign":""
+				},{
+				"label" : "Name",
+				"type": "text",
+				"field": "FirstName",
+				"width":"",
+				"hAlign":""
+				}],
+		"treeTable" : [
+				{
+				"label" : "CheckBox",
+				"type": "checkbox",
+				"field": "selected",
+				"width":"10%"
+				},
+				{
+				"label" : "Products",
+				"type": "marginText",
+				"field": "name"
+				}
+				]
+		}
+}

@@ -23,8 +23,8 @@
 					
 						<t:Table
 					    	id="employeeTable1"
-							visibleRowCount="{= ${employees>/Employees}.length}"
-							rows="{employees>/Employees}"
+							visibleRowCount="{= ${tables>/data/employees}.length}"
+							rows="{tables>/data/employees}"
 							title="{i18n>FactFuncTableTitle}"
 							selectionMode="None"/>		
 					</IconTabFilter>
@@ -56,9 +56,7 @@
 			                <t:columns>
 			                	<t:Column>
 			                		<Label text="Categories"/>
-			                		<t:template>
-			                			<Text text="{thirdTableModel>name}" wrapping="false"/>
-			                		</t:template>
+			                	
 			                	</t:Column>          
 			                </t:columns>						
 						</t:TreeTable>

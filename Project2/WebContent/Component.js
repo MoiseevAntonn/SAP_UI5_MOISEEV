@@ -44,10 +44,21 @@ sap.ui.define([
 			//oModel1.setDefaultBindingMode(BindingMode.OneWay);
 			this.setModel(oModel1,"tutorial");
 			sap.ui.getCore().getMessageManager().registerObject(this.getRootControl(),true);
+
+		},
+		reedData : function(oParameters){
 			
+			return new Promise((resolve,reject) => {
 			
-			
-			
+				oParameters.success = function(oData,response){
+					resolve(oData);
+				};
+				oParameters.error = function(oError){
+					reject(oError);
+				}
+				var invoiceModel = this.getModel("invoice");
+				invoiceModel.read(oParameters.sPath,oParameters);
+			})
 		}
 	});
 });

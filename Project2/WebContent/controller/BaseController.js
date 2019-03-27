@@ -20,6 +20,9 @@ sap.ui.define([
 			} else {
 				this.getRouter().navTo("appHome",{},true);
 			}
+		},
+		reedData : function(oParameters){
+			return this.getOwnerComponent().reedData(oParameters);
 		}
 	});
 });
