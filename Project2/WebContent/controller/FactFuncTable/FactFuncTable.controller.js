@@ -1,44 +1,31 @@
 sap.ui.define([
 	"sap/ui/task/controller/BaseController",
 	"sap/ui/model/json/JSONModel",
+	"sap/ui/task/controller/FactFuncTable/JSONTableModel",
 	"sap/ui/core/Fragment",
-	"sap/ui/core/CustomData"
-], function(BaseController,JSONModel,Fragment,CustomData){
+	"sap/ui/core/CustomData",
+	"sap/ui/task/TableCreator"
+], function(BaseController,JSONModel,JSONTableModel,Fragment,CustomData,TableCreator){
 	"use strict";
 	return BaseController.extend("sap.ui.task.controller.App",{
 		onInit : function (){
+			var that = this;
 			
-			//create local model
+			//init local model
 			
-			var tableModel = new JSONModel()
-			tableModel.loadData("./model/metadataTables.json");
 			
-			var invoiceModel = this.getOwnerComponent().getModel("invoice");
+			
+			
+			var tableModel = new JSONTableModel();
+			this.getView().setModel(tableModel,"tables");
 			
 			//load data into local model
 			
 			this.getView().setBusy(true);
-			this.reedData({
-				sPath : "/Employees"
-			})
-			.then(
-				oData=>{
-					tableModel.setProperty("/data/employees",oData.results);
-				},
-				oError=>{
-					this.getRouter().getTargets().display("notFound",{
-						   fromTarget : "home"
-					});
-				}
-			)
-			.finally(()=>{
-				this.getView().setBusy(false);
-			})
-			
-			var that = this;
-			
-			this.getView().setBusy(true);
 			Promise.all([
+				this.reedData({
+					sPath : "/Employees"
+				}),
 				this.reedData({
 					sPath : "/Categories"
 				}),
@@ -48,75 +35,73 @@ sap.ui.define([
 						$expand: "Supplier"
 					}
 				})
-			]).then(
-				results => {
-					var categories = results[0].results;
-					var products = results[1].results;
-				
-					/*categories.forEach(category=>{
-						category.level = "c";
-						category.name = category.CategoryName;
-						category.results = products.filter(product=>{
-							
-							var supplier = product.Supplier || "";
-							supplier.level = "s";
-							supplier.name = supplier.CompanyName;
-							
-							product.results = supplier;
-							product.level = "p";
-							product.name = product.ProductName;
-							product.__parent = categories.filter(category=>{
-								return product.CategoryID == category.CategoryID;
-							})[0];
-							return product.CategoryID == category.CategoryID;
-						});
-					});*/
-					var handledCategories = that.handleCategoriesAndProducts(categories,products);
-					that.getView().getModel("tables").setProperty("/data/categories",handledCategories);
-					
-				},
-				error => {
-					this.getRouter().getTargets().display("notFound",{
-						   fromTarget : "home"
-					});
-				}
-			)
-			.finally(()=>{
-				this.getView().setBusy(false);
+			])
+			.then( results => {
+					var aEmployees = results[0].results;
+					var aCategories = results[1].results;
+					var aProducts = results[2].results;
+					var aHandledCategories = tableModel.handleCategoriesAndProducts(aCategories, aProducts);
+					tableModel.setEmployees(aEmployees);
+					tableModel.setCategories(aHandledCategories);
 			})
+			.catch( oError => 
+				this.getRouter().getTargets().display("notFound",{
+					fromTarget : "home"
+				})
+			)
+			.finally(() => this.getView().setBusy(false))
 			
-			// load data for three table
 			
-			
-			this.getView().setModel(tableModel,"tables");
-			
-			
-			
+			// handle sap.ui.table Table
 			var oTable = this.byId("employeeTable1");
-			oTable.bindAggregation('columns',{
-				path: "tables>/metadata/commonTable",
-				factory: this.сolumnFactory.bind(this)
-			});
-			oTable.addStyleClass("sapUiResponsiveMargin");
 			
+			/*oTable.bindAggregation('columns',{
+				path: "tables>/metadata/commonTable",
+				factory: this.сolumnFactoryUITable.bind(this)
+			});
+			oTable.addStyleClass("sapUiResponsiveMargin");*/
+			
+			var oTableCreator = new TableCreator({
+				sType : "ui_table",
+				sMetadataModelName : "tables",
+				sMetadataColumnsPath : "/metadata/commonTable",
+				sDataModelName : "tables",
+				sDataRowsPath : "/data/employees",
+				oTable : oTable,
+				fCardHandler : this.onAddressPopover.bind(this)
+			});
 			
 			// handle sap.m Table
 			var oMTable = this.byId("employeeTable2");
-			oMTable.bindAggregation('columns',{
+			
+			oMTable.setModel( tableModel, "columns");
+			
+			var oTableCreator1 = new TableCreator({
+				sType : "m_table",
+				sMetadataModelName : "columns",
+				sMetadataColumnsPath : "/metadata/commonTable",
+				sDataModelName : "tables",
+				sDataRowsPath : "/data/employees",
+				oTable : oMTable,
+				fCardHandler : this.onAddressPopover.bind(this)
+			});
+			
+			/*oMTable.bindAggregation('columns',{
 				path: "tables>/metadata/commonTable",
 				template: new sap.m.Column({
 					header: new sap.m.Text({text:"{tables>label}"}),
+					width : {
+						model:"tables",
+						path:"width"
+					}
 				})
 			});
-			
-		
 			
 			oMTable.setModel( tableModel, "columns");
 			oMTable.bindAggregation('items',{
 				model: "tables",
 				path : "/data/employees",
 				factory : function(sId , oRowCtx){
-					
 					var oCLI = new sap.m.ColumnListItem();
 					
 					oCLI.bindAggregation("cells", {
@@ -130,41 +115,44 @@ sap.ui.define([
 					return oCLI;
 				}
 			});
-			oMTable.addStyleClass("sapUiResponsiveMargin");
+			oMTable.addStyleClass("sapUiResponsiveMargin");*/
 			
+			
+			//handle Tree table
 			var treeTable = this.byId("thirdTable");
-			treeTable.bindAggregation('columns',{
+			
+			var newTable = new TableCreator({
+				sType : "tree_table",
+				sMetadataModelName : "tables",
+				sMetadataColumnsPath : "/metadata/treeTable",
+				sDataModelName : "tables",
+				sDataRowsPath : "/data/categories",
+				oTable : treeTable,
+				fCheckBoxEventHandler : this.checkBoxEventHandler.bind(this)
+			});
+			
+			/*treeTable.bindAggregation('columns',{
 				path: "tables>/metadata/treeTable",
-				factory: this.сolumnFactoryTree.bind(this)
+				factory: this.сolumnFactoryUITable.bind(this)
 			});
 			treeTable.bindAggregation('rows',{
 				path : 'tables>/data/categories',
-				parameters:{arrayNames:['results']},
-				
-			})
-			treeTable.addStyleClass("sapUiResponsiveMargin");
-	
+				parameters:{
+					arrayNames:['results']
+				}
+			});
+			treeTable.addStyleClass("sapUiResponsiveMargin");*/
 		},
 		
-		сolumnFactory: function(sId,oContext){
+		сolumnFactoryUITable: function(sId,oContext){
 			
-//			switch
 			var oColumn = new sap.ui.table.Column({
-				label: new sap.m.Label({text:"{tables>label}"}),
-			});
-			
-			
-			var oTemplate = this.getTemplate(oContext,"tables");
-			oColumn.setTemplate(oTemplate);
-			
-			return oColumn;
-		},
-		сolumnFactoryTree: function(sId,oContext){
-			
-//			switch
-
-			var oColumn = new sap.ui.table.Column({
-				label: new sap.m.Label({text:"{tables>label}"}),
+				label: new sap.m.Label({
+					text:{
+						model:"tables",
+						path:"label"
+					}
+				}),
 				width:{
 					model:"tables",
 					path:"width"
@@ -177,20 +165,19 @@ sap.ui.define([
 			return oColumn;
 		},
 		
-		
 		getTemplate: function(oClmnCtx,oRowCtx){
-			
 			var oControl,
 				oData = oClmnCtx.getObject();
 			
-			var oBindObj = { // === "{employees>'field'}"
-				model: "tables",
-				path: oData.field
-			}; 
+			var oBindObj = {};
+			
+			oBindObj.parts = []; 
+			oData.field.split("_").forEach(item=>{
+				oBindObj.parts.push({path:item,model:"tables"})
+			});
 			
 			switch (oData.type){
 			case "img":
-				//oBindObj.formatter = sBin => 'data:image/png;base64,'+btoa(sBin);
 				oBindObj.formatter = id => "./Photos/images"+id%6+".jpg";
 				oControl = new sap.m.Image({
 					src: oBindObj,
@@ -198,42 +185,22 @@ sap.ui.define([
 					height:"50px"
 				});
 				break;
+				
 			case "date":
 				oControl = new sap.m.DateTimeField({
 					dateValue : oBindObj
 				});
 				break;
+				
 			case "text":
-				delete oBindObj.path;
-				delete oBindObj.model;
-				oBindObj.parts = [];
-				oData.field.split("_").forEach(
-					item => oBindObj.parts.push({
-						path:item,
-						model:"tables"
-					})
-				);
 				oControl = new sap.m.Text({
 					text : oBindObj
 				});
-				/*if (sModelName === "thirdTableModel"){
-					var oDataTemplate = new CustomData({
-						key:"level", 
-						value: "{thirdTableModel>level}",
-						writeToDom : true
-					});
-					
-					oControl.addCustomData(oDataTemplate);
-				}*/
 				break;
 			
 			case "marginText":	
-				
 				oControl = new sap.m.Text({
-					text : {
-						model:"tables",
-						path:"name"
-					},
+					text : oBindObj,
 					customData:[
 						new CustomData({
 							key:"level", 
@@ -246,20 +213,15 @@ sap.ui.define([
 						})
 					]
 				});
-				
 				break;
+				
 			case "card":
-				delete oBindObj.path;
-				delete oBindObj.model;
-				oBindObj.parts = [];
-				oData.field.split("_").forEach((item,i,arr)=>{
-					oBindObj.parts.push({path:item,model:"tables"})
-				});
 				oControl = new sap.m.Link({
 					press: this.onAddressPopover.bind(this),
-					text : "To address detail {"+"tables"+">FirstName}"
+					text : "To address detail {tables>FirstName}"
 				});
 				break;
+				
 			case "checkbox":
 				oControl = new sap.m.CheckBox({
 					width : "1em",
@@ -272,13 +234,8 @@ sap.ui.define([
 				});
 				oControl.attachSelect(this.checkBoxEventHandler,this);
 				break;
+				
 			default:
-				delete oBindObj.path;
-				delete oBindObj.model;
-				oBindObj.parts = []; 
-				oData.field.split("_").forEach((item,i,arr)=>{
-					oBindObj.parts.shift({path:item,model:"tables"})
-				});
 				oControl = new sap.m.Text({
 					text:oBindObj
 				});
@@ -298,9 +255,9 @@ sap.ui.define([
 			if (!this.byId("popoverAddress")) {
 				// load asynchronous XML fragment
 				var oFragmentController = {
-						onClosePopover:function(){
-							oView.byId("popoverAddress").close();
-						}
+					onClosePopover:function(){
+						oView.byId("popoverAddress").close();
+					}
 				};
 				Fragment.load({
 					id: oView.getId(),
@@ -320,66 +277,28 @@ sap.ui.define([
 		},
 
 		checkBoxEventHandler:function(oEvent){
-			
 			var oRefToItem = oEvent.getSource().getBindingContext('tables').getObject();
-			//ctx .getModel() .getPath() .getObject()
-			// var row = ctx.getObject();
-			// var siblings = row.__parent.childs;
-			// var bSelectParent = siblings.every(child => );
+			var checkBoxValue = oEvent.getParameter("selected");
 			
-			if (oEvent.getParameter("selected")){
-				if (oRefToItem.level == "c"){
-					oRefToItem.results.forEach(product=>{
-						product.selected = true;
-					});
-				};
-				if (oRefToItem.level == "p"){
+			if (oRefToItem.level == "c"){
+				oRefToItem.results.forEach(product=>{
+					product.selected = checkBoxValue;
+				});
+			};
+			if (oRefToItem.level == "p"){
+				if (checkBoxValue){
 					var category = oRefToItem.__parent
 					if (category.results.every(prod=> prod.selected)){
-						category.selected = true;
+						category.selected = checkBoxValue;
 					};
-				};
-			} else {
-				if (oRefToItem.level == "c"){
-					oRefToItem.results.forEach(product=>{
-						product.selected = false;
-					});
-				};
-				if (oRefToItem.level == "p"){
+				} else {
 					var category = oRefToItem.__parent;
-					category.selected = false;
-				};
-			};
-			this.getView().getModel("tables").updateBindings();
-		},
-		handleCategoriesAndProducts : function(categories,products){
-			var productMap = {};
-			products.forEach(product=>{
-				var supplier = product.Supplier || "";
-				supplier.level = "s";
-				supplier.name = supplier.CompanyName;
-
-				product.name = product.ProductName;
-				product.results = supplier;
-				product.level = "p";
-				product.__parent = categories.filter(category=>{
-					return product.CategoryID == category.CategoryID;
-				})[0];
-				
-				
-				if(!productMap[product.CategoryID]) {
-					productMap[product.CategoryID] = [];
-				}
-				productMap[product.CategoryID].push(product);
-	
-			});
+					category.selected = checkBoxValue;
 			
-			categories.forEach(category=>{
-				category.level = "c";
-				category.name = category.CategoryName;
-				category.results = productMap[category.CategoryID];
-			});
-			return categories;
+				};
+			}
+			//this.tableModel().updateModel();
+			this.getView().getModel("tables");
 		}
 	});
 });

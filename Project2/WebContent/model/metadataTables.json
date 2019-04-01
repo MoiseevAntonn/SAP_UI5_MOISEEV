@@ -8,13 +8,13 @@
 				"label" : "Photo",
 				"type": "img",
 				"field": "EmployeeID",
-				"width":"",
+				"width":"70px",
 				"hAlign":""
 				},{
 				"label" : "Fio",
 				"type": "text",
 				"field": "FirstName_LastName",
-				"width":"",
+				"width":"10%",
 				"hAlign":""
 				},{
 				"label" : "Adress",
