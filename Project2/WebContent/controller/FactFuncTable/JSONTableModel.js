@@ -33,6 +33,8 @@ sap.ui.define([
 				product.name = product.ProductName;
 				product.results = supplier;
 				product.level = "p";
+				product.selected = false;
+				product.UnitPrice = parseFloat(product.UnitPrice);
 				product.__parent = categories.filter(category=>{
 					return getCKey(product) == getCKey(category);
 				})[0];
@@ -45,11 +47,12 @@ sap.ui.define([
 			});
 			
 			categories.forEach(category=>{
+				category.selected = false;
 				category.level = "c";
 				category.name = category.CategoryName;
 				category.results = productMap[getCKey(category)];
 			});
-			return categories;
+			return {results: categories};
 			
 			function getCKey(item){
 				return item.CategoryID;

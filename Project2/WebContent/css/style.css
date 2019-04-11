@@ -1,6 +1,58 @@
 .disableScroll {	
 	height: calc(100% - 48px);
 }
+.checkBoxPopoverContentStyle{
+	float:left;
+    width: 75%;
+}
+.resetButtonPopoverStyle{
+	width: 65px;
+	height: 10px;
+	
+	margin-left : 5px;
+	margin-right : 5px;
+	margin-top : auto ;
+	position: absolute; 
+}
+.searchFieldPopoverStyle{
+	overflow-y : visible;
+	margin-left : 5%;
+	margin-right : 5%;
+	width : 90%;
+	position: absolute; 
+}
+.selectPopoverStyle{
+	
+	position: absolute;
+}
+.selectFieldPopoverStyle{
+
+	/* margin-left : 20%;
+	margin-right : 5%; */
+	
+	position: relative;
+	margin-left : 5%;
+	/* margin-top : 0;
+	width : 250px; */
+}
+.inputFieldPopoverStyle{
+	/* position: absolute;
+	width : 50px;
+	margin : 50px 0 0 -160px; */
+	position: relative;
+	margin-left : 5%;
+	/* margin-top : 50px; */
+}
+.buttonFieldPopoverStyle{
+	/* position: absolute;
+	
+	margin : 100px 0 0 -160px;
+	position: absolute; */
+	/* width : 150px; */
+	margin-left : 35%;
+	margin-right : 35%;
+	position: relative;
+}
 span[data-level="c"]{
 	
 }

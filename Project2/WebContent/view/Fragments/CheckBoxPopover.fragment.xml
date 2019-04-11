@@ -1,0 +1,26 @@
+<core:FragmentDefinition
+   xmlns="sap.m"
+   xmlns:core="sap.ui.core" >
+
+   <Popover
+   	  id="checkBoxPopover"
+   	  showHeader="false"
+   	  contentWidth="300px"
+   	  contentHeight="auto"
+   	 
+   	  >
+		<content>
+			<CheckBox
+			id="filterCheckBox" 
+			text="Filter choosen products"
+			class="checkBoxPopoverContentStyle"
+			/>
+			<Button
+			
+			icon="sap-icon://add-filter"
+			press="onFilterCategories"
+			class="checkBoxPopoverContentStyle resetButtonPopoverStyle"/>
+		</content>
+		
+   	</Popover>
+</core:FragmentDefinition>

@@ -33,19 +33,46 @@
 				"type": "text",
 				"field": "FirstName",
 				"width":"",
-				"hAlign":""
+				"hAlign":"",
+				"additionalType":[
+						{
+						"type":"select",
+						"field":"firstName"
+						}
+					]
 				}],
 		"treeTable" : [
 				{
 				"label" : "CheckBox",
 				"type": "checkbox",
 				"field": "selected",
-				"width":"10%"
-				},
-				{
+				"width":"10%",
+				"menuItems":[{
+						"label":"Filter",
+						"type":"CheckBox"
+					}]
+				},{
 				"label" : "Products",
 				"type": "marginText",
-				"field": "name"
+				"field": "name",
+				"menuItems":[{
+						"label":"Filter",
+						"type":"SearchField"
+					},{
+						"label":"Sorting",
+						"type":"Sorting"
+					}]
+				},{
+				"label" : "Prices",
+				"type": "marginPrice",
+				"field": "UnitPrice",
+				"menuItems":[{
+						"label":"Filter",
+						"type":"Select"
+					},{
+						"label":"Sorting",
+						"type":"Sorting"
+					}]
 				}
 				]
 		}

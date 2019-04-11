@@ -24,17 +24,17 @@
 				<QuickViewGroup >
 					<QuickViewGroupElement
 							label="Adress"
-							value="{employees>Address}"
+							value="{row>Address}"
 							>
 					</QuickViewGroupElement>
 					<QuickViewGroupElement
 							label="City"
-							value="{employees>City}"
+							value="{tables>City}"
 							>
 					</QuickViewGroupElement>
 					<QuickViewGroupElement
 							label="Country"
-							value="{employees>Country}"
+							value="{tables>Country}"
 							>
 					</QuickViewGroupElement>
 				</QuickViewGroup>

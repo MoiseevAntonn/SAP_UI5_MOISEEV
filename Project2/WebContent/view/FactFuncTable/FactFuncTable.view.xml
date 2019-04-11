@@ -24,7 +24,6 @@
 						<t:Table
 					    	id="employeeTable1"
 							visibleRowCount="{= ${tables>/data/employees}.length}"
-							rows="{tables>/data/employees}"
 							title="{i18n>FactFuncTableTitle}"
 							selectionMode="None"/>		
 					</IconTabFilter>
@@ -38,12 +37,12 @@
 					</IconTabFilter>
 					
 					<IconTabFilter 
-						id="treeTable" 
+					
 						text="Tree Table" 
 						key="3">
 						
 						<t:TreeTable
-				    		id="thirdTable"
+				    		id="treeTable"
 				    		rowHeight="49"
 				    		selectionMode="None"
 				    		enableSelectAll="false"
@@ -53,12 +52,7 @@
 			                		<Title text="Tree Table"/>
 			                	</Toolbar>
 			                </t:extension>
-			                <t:columns>
-			                	<t:Column>
-			                		<Label text="Categories"/>
-			                	
-			                	</t:Column>          
-			                </t:columns>						
+			              						
 						</t:TreeTable>
 						
 					</IconTabFilter>
