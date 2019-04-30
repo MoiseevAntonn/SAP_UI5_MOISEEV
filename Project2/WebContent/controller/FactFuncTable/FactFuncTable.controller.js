@@ -6,13 +6,14 @@ sap.ui.define([
 	"sap/ui/core/CustomData",
 	"sap/ui/task/TableConfig/TableCreator",
 	"sap/ui/task/TableConfig/UiTableCreator",
-	"sap/ui/task/TableConfig/ColumnFactory",
-	"sap/ui/task/TableConfig/CellFactory",
+	"sap/ui/task/TableConfig/ColumnMenuFactory",
+	"sap/ui/task/TableConfig/CellEventsFactory",
 	"sap/ui/task/TableConfig/TreeTableCreator",
 	"sap/ui/task/TableConfig/MTableCreator",
 	"sap/ui/task/TableConfig/MColumnFactory",
 	"sap/ui/task/TableConfig/MCellFactory",
-], function(BaseController,JSONModel,JSONTableModel,Fragment,CustomData,TableCreator,UiTableCreator,ColumnFactory,CellFactory,TreeTableCreator,MTableCreator,MColumnFactory,MCellFactory){
+	"sap/ui/task/control/SearchHelp"
+], function(BaseController,JSONModel,JSONTableModel,Fragment,CustomData,TableCreator,UiTableCreator,ColumnMenuFactory,CellEventsFactory,TreeTableCreator,MTableCreator,MColumnFactory,MCellFactory,SearchHelp){
 	"use strict";
 	return BaseController.extend("sap.ui.task.controller.App",{
 		onInit : function (){
@@ -49,7 +50,8 @@ sap.ui.define([
 					var aProducts = results[2].results;
 					var aHandledCategories = tableModel.handleCategoriesAndProducts(aCategories, aProducts);
 					tableModel.setEmployees(aEmployees);
-					tableModel.setCategories(aHandledCategories);
+					tableModel.setCategories(aHandledCategories.results);
+					tableModel.setProducts(aProducts);
 			})
 			.catch( oError => 
 				this.getRouter().getTargets().display("notFound",{
@@ -59,6 +61,10 @@ sap.ui.define([
 			.finally(() => this.getView().setBusy(false))
 			
 			
+			var oFragmentModel = new JSONModel();
+			oFragmentModel.loadData("./model/fragmentsModelStructure.json");
+			this.getView().setModel(oFragmentModel,"fragmentModel");
+			
 			// handle sap.ui.table Table
 			var oTable = this.byId("employeeTable1");
 			
@@ -66,8 +72,8 @@ sap.ui.define([
 			oTable.addStyleClass("sapUiResponsiveMargin");
 			
 			
-			var oCellConfig = new CellFactory(that);
-			var oColumnConfig = new ColumnFactory(that);
+			var oCellConfig = new CellEventsFactory(that);
+			var oColumnConfig = new ColumnMenuFactory(that);
 			
 			var oMCellConfig = new MCellFactory(that);
 			var oMColumnConfig = new MColumnFactory(that);
@@ -125,8 +131,14 @@ sap.ui.define([
 				arrayNames : ["results"]
 			});
 			oTreeTableCreator.build();
-			
-			
+		},
+		checkInput : function(oEvent){
+			var oAutoCompleteInput = this.getView().byId("autocompelteInput");
+			if (oAutoCompleteInput.getAutocomplete() === "on") {
+				oAutoCompleteInput.setAutocomplete("off");
+			} else {
+				oAutoCompleteInput.setAutocomplete("on")
+			}
 		}
 	});
 });

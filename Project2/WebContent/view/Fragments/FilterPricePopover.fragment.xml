@@ -7,33 +7,36 @@
    	  showHeader="false"
    	  contentWidth="250px"
    	  contentHeight="auto"
-   	  class="selectPopoverStyle"
-   	  >
-		<content>
+   	  class="sapUiSizeCompact">
+		<HBox>
 			<Select
-			id="selectFieldFilterOperation"
-			forceSelection="false"
-			class="selectFieldPopoverStyle"
-			width="90%"
-			valueStateText="Set operation">
-				<core:Item key="EQ" text="equals" />
-				<core:Item key="GE" text="greater or equals" />
-				<core:Item key="LE" text="less or equals" />		
+				id="selectFieldFilterOperation"
+				selectedKey="{fragmentModel>/FilterPrice/selectedKey}"
+				forceSelection="false"
+				items="{fragmentModel>/FilterPrice/keys}">
+					<items>
+						<core:Item key="{fragmentModel>key}" text="{fragmentModel>text}" />
+					</items>
+	<!-- 
+					<core:Item key="EQ" text="=" />
+					<core:Item key="GT" text="&gt;" />
+					<core:Item key="GE" text="&gt;=" />
+					<core:Item key="LE" text="&lt;=" />
+					<core:Item key="LT" text="&lt;" /> -->
+							
 			</Select>
 			
 			<Input
-			class="inputFieldPopoverStyle"
-			width="90%"
-			type="Number"
-			placeholder="Enter price"/>
+				value="{fragmentModel>/FilterPrice/value}"
+				type="Number"
+				placeholder="Enter price"/>
 			
 			<Button
-			class="buttonFieldPopoverStyle"
-			width="30%"
-			icon="sap-icon://add-filter"
-			press="onFilterCategories"
-			/>
-		</content>
+				icon="sap-icon://add-filter"
+				press="getFilterDataFromEvent"
+				class="sapUiTinyMarginBegin"/>
+				
+		</HBox>
 		
    	</Popover>
 </core:FragmentDefinition>

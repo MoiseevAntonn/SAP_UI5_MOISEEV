@@ -1,0 +1,27 @@
+{
+	"MassCheckBox":{
+		"selected" : false
+	},
+	"MassInput":{
+		"value" : ""
+	},
+	"FilterCheckBox":{
+		"selected" : false
+	},
+	"FilterName":{
+		"value":""
+	},
+	"FilterPrice":{
+		"selectedKey":"EQ",
+		"keys":[
+		{"key":"EQ","text":"="},
+		{"key":"GT","text":">"},
+		{"key":"GE","text":">="},
+		{"key":"LT","text":"<"},
+		{"key":"LE","text":"<="}
+		],
+		"value":""
+	}
+}
+
+

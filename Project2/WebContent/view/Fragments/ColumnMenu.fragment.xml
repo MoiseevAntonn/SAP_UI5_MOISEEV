@@ -1,13 +1,87 @@
 <core:FragmentDefinition
-   xmlns="sap.m"
    xmlns:core="sap.ui.core"
    xmlns:t="sap.ui.table"
-   xmlns:u="sap.ui.unified">
+   xmlns="sap.ui.unified">
 
 	
-   <Menu
-   id="columnMenu"
-   />
+	<Menu 
+		itemSelect="onMenuItemPress">
+		<MenuItem
+			visible="{column>hasFilter}"
+			icon="sap-icon://filter"
+			text="Filter">
+			<customData>
+				<core:CustomData
+					key="type"
+					value="filter"
+				/>
+			</customData>
+		</MenuItem>
+		
+		<MenuItem
+			visible="{column>filtered}"
+			icon="sap-icon://clear-filter"
+			text="Filter clear">
+			<customData>
+				<core:CustomData
+					key="type"
+					value="filterClear"
+				/>
+			</customData>
+		</MenuItem>
+			
+		<MenuItem 
+			visible="{column>hasMass}"
+			icon="sap-icon://multiselect-all"
+			text="Mass">
+		
+			<customData>
+				<core:CustomData
+					key="type"
+					value="mass"
+				/>
+			</customData>
+		</MenuItem>
+		
+		<MenuItem 
+			visible="{column>hasSearchHelp}"
+			icon="sap-icon://search"
+			text="Category SearchHelp">
+		
+			<customData>
+				<core:CustomData
+					key="type"
+					value="categorySearchHelp"
+				/>
+			</customData>
+		</MenuItem>
+		
+		<MenuItem 
+			visible="{column>hasSearchHelp}"
+			icon="sap-icon://search"
+			text="Product SearchHelp">
+		
+			<customData>
+				<core:CustomData
+					key="type"
+					value="productSearchHelp"
+				/>
+			</customData>
+		</MenuItem>
+		
+		<MenuItem 
+			visible="{column>hasSearchHelp}"
+			icon="sap-icon://search"
+			text="Price SearchHelp">
+		
+			<customData>
+				<core:CustomData
+					key="type"
+					value="priceSearchHelp"
+				/>
+			</customData>
+		</MenuItem>
+	</Menu>
    
    	  
  

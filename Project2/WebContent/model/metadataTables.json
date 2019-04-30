@@ -47,32 +47,34 @@
 				"type": "checkbox",
 				"field": "selected",
 				"width":"10%",
-				"menuItems":[{
-						"label":"Filter",
-						"type":"CheckBox"
-					}]
+				"hasFilter" : true,
+				"filtered" : false,
+				"hasMass" : true,
+				"hasSearchHelp":false
 				},{
 				"label" : "Products",
 				"type": "marginText",
 				"field": "name",
-				"menuItems":[{
-						"label":"Filter",
-						"type":"SearchField"
-					},{
-						"label":"Sorting",
-						"type":"Sorting"
-					}]
+				"hasFilter" : true,
+				"filtered" : false,
+				"hasMass" : false,
+				"hasSearchHelp":true
 				},{
 				"label" : "Prices",
 				"type": "marginPrice",
 				"field": "UnitPrice",
-				"menuItems":[{
-						"label":"Filter",
-						"type":"Select"
-					},{
-						"label":"Sorting",
-						"type":"Sorting"
-					}]
+				"hasFilter" : true,
+				"filtered" : false,
+				"hasMass" : false,
+				"hasSearchHelp":true
+				},{
+				"label" : "Status",
+				"type": "marginInput",
+				"field": "status",
+				"hasFilter" : false,
+				"filtered" : false,
+				"hasMass" : true,
+				"hasSearchHelp":false
 				}
 				]
 		}

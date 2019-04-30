@@ -4,7 +4,8 @@
 	xmlns:l="sap.ui.layout"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:core="sap.ui.core"
-	xmlns:t="sap.ui.table">
+	xmlns:t="sap.ui.table"
+	xmlns:custom="sap.ui.task.control">
 	<Page
 		title="{i18n>FactFuncTableTitle}"
 		showNavButton="true"
@@ -45,7 +46,7 @@
 				    		id="treeTable"
 				    		rowHeight="49"
 				    		selectionMode="None"
-				    		enableSelectAll="false"
+				    		visibleRowCount="{= ${tables>/data/categories}.results.length}"
 			                ariaLabelledBy="title">
 			                <t:extension>
 			                	<Toolbar>
@@ -54,6 +55,24 @@
 			                </t:extension>
 			              						
 						</t:TreeTable>
+						<custom:AutoCompleteInput 
+							id="autocompelteInput" 
+							autocomplete="off"/>
+						<Button 
+							press=".checkInput"/>
+						<!-- <custom:SearchHelp
+							id="searchHelp"/> -->
+						<!-- <l:VerticalLayout
+							class="sapUiContentPadding"
+							width="100%">
+							<l:content>
+								<Button 
+								 	text="open shp"
+									press=".onOpenSearchHelp"/>
+							</l:content>
+						</l:VerticalLayout> -->
+						
+					
 						
 					</IconTabFilter>
 				</items>

@@ -5,16 +5,22 @@
    <Popover
    	  id="searchFieldPopover"
    	  showHeader="false"
-   	  contentWidth="300px"
-   	  contentHeight="50px"
-   	  >
-		<content>
-			<SearchField
+   	  class="sapUiSizeCompact">
+		<HBox>
+			<!-- <SearchField
+			value="{fragmentModel>/FilterName/value}"
+			search="getFilterDataFromEvent"
+			class=""/> -->
+			<Input
+				value="{fragmentModel>/FilterName/value}"
+				placeholder="Enter name"/>
 			
-			search="onFilterCategories"
-			class="searchFieldPopoverStyle"/>
+			<Button
+				icon="sap-icon://add-filter"
+				press="getFilterDataFromEvent"
+				class="sapUiTinyMarginBegin"/>
 			
-		</content>
+		</HBox>
 	
    	</Popover>
 </core:FragmentDefinition>

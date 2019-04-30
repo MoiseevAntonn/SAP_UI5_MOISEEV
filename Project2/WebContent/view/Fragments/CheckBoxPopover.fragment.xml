@@ -5,22 +5,17 @@
    <Popover
    	  id="checkBoxPopover"
    	  showHeader="false"
-   	  contentWidth="300px"
-   	  contentHeight="auto"
-   	 
-   	  >
-		<content>
+   	  class="sapUiSizeCompact">
+		<HBox
+			justifyContent="SpaceAround">
 			<CheckBox
-			id="filterCheckBox" 
-			text="Filter choosen products"
-			class="checkBoxPopoverContentStyle"
-			/>
+				id="filterCheckBox" 
+				selected="{fragmentModel>/FilterCheckBox/selected}"
+				class=""/>
 			<Button
-			
-			icon="sap-icon://add-filter"
-			press="onFilterCategories"
-			class="checkBoxPopoverContentStyle resetButtonPopoverStyle"/>
-		</content>
-		
-   	</Popover>
+				icon="sap-icon://add-filter"
+				press="getFilterDataFromEvent"
+				class=""/>
+   		</HBox>
+   		</Popover>
 </core:FragmentDefinition>
