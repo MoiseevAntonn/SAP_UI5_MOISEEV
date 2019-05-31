@@ -111,6 +111,10 @@
          	"pattern":"factFuncTable",
          	"name": "appFactFuncTable",
          	"target":"factFuncTable"
+         },{
+         	"pattern":"productList",
+         	"name": "appProductList",
+         	"target":"productList"
          }],
          "targets": {
             "home": {
@@ -184,6 +188,12 @@
 				"viewPath":"sap.ui.task.view.FactFuncTable",
 				"viewName":"FactFuncTable",
 				"viewLevel":2  
+            },
+            "productList":{
+            	"viewId":"productList",
+				"viewPath":"sap.ui.task.view.DataBinding",
+				"viewName":"Products",
+				"viewLevel":2
             }
          }
       },

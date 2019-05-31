@@ -24,7 +24,7 @@
 				<QuickViewGroup >
 					<QuickViewGroupElement
 							label="Adress"
-							value="{row>Address}"
+							value="{tables>Adress}"
 							>
 					</QuickViewGroupElement>
 					<QuickViewGroupElement

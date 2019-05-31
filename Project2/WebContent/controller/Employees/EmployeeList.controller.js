@@ -4,6 +4,21 @@ sap.ui.define([
 ],function(BaseController,JSONModel){
 	"use strict";
 	return BaseController.extend("sap.ui.task.controller.Employees.EmployeeList",{
+		
+		onInit : function(){
+			var localModel = new JSONModel({
+				Employees : null
+			});
+			localModel.setProperty("/Employees",this.getOwnerComponent().getModel("invoice"))
+			
+			
+			/*var oPaginator = this.byId("testPaginator");
+			oPaginator.setDataModel(this.getModel("invoices"));
+			oPaginator.setDataPath("/Employees");
+			oPaginator.setOutputModel(this.getModel("invoices"));
+			oPaginator.setOutputPath("/Output")*/
+		},
+		
 		onListItemPressed : function(oEvent){
 			
 			//extract path from event 

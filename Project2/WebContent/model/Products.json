@@ -1,6 +1,6 @@
 { "Products": [ {
      "ProductID": 1,
-     "ProductName": "Chai",
+     "ProductName": "Chai 1",
      "SupplierID": 1,
      "CategoryID": 1,
      "QuantityPerUnit": "10 boxes x 20 bags",
@@ -11,10 +11,10 @@
      "Discontinued": false
     }, {
      "ProductID": 2,
-     "ProductName": "Chang",
+     "ProductName": "Chang 2",
      "SupplierID": 1,
      "CategoryID": 1,
-     "QuantityPerUnit": "24 - 12 oz bottles",
+     "QuantityPerUnit": "24 - 12 oz bottles 2",
      "UnitPrice": "19.0000",
      "UnitsInStock": 17,
      "UnitsOnOrder": 40,
@@ -22,7 +22,7 @@
      "Discontinued": true
     }, {
      "ProductID": 3,
-     "ProductName": "Aniseed Syrup",
+     "ProductName": "Aniseed Syrup 3",
      "SupplierID": 1,
      "CategoryID": 2,
      "QuantityPerUnit": "12 - 550 ml bottles",
@@ -33,7 +33,7 @@
      "Discontinued": false
     }, {
      "ProductID": 4,
-     "ProductName": "Chef Anton's Cajun Seasoning",
+     "ProductName": "Chef Anton's Cajun Seasoning 4",
      "SupplierID": 2,
      "CategoryID": 2,
      "QuantityPerUnit": "48 - 6 oz jars",
@@ -44,7 +44,7 @@
      "Discontinued": false
     }, {
      "ProductID": 5,
-     "ProductName": "Chef Anton's Gumbo Mix",
+     "ProductName": "Chef Anton's Gumbo Mix 5",
      "SupplierID": 2,
      "CategoryID": 2,
      "QuantityPerUnit": "36 boxes",
@@ -53,5 +53,104 @@
      "UnitsOnOrder": 0,
      "ReorderLevel": 0,
      "Discontinued": true
+    },{
+     "ProductID": 6,
+     "ProductName": "Chef 6",
+     "SupplierID": 2,
+     "CategoryID": 2,
+     "QuantityPerUnit": "36 boxes",
+     "UnitPrice": "21.3500",
+     "UnitsInStock": 0,
+     "UnitsOnOrder": 0,
+     "ReorderLevel": 0,
+     "Discontinued": true
+    },{
+     "ProductID": 7,
+     "ProductName": "Chef 7",
+     "SupplierID": 2,
+     "CategoryID": 2,
+     "QuantityPerUnit": "36 boxes",
+     "UnitPrice": "21.3500",
+     "UnitsInStock": 0,
+     "UnitsOnOrder": 0,
+     "ReorderLevel": 0,
+     "Discontinued": true
+    },{
+     "ProductID": 8,
+     "ProductName": "Chefasdasdasd 8",
+     "SupplierID": 2,
+     "CategoryID": 2,
+     "QuantityPerUnit": "48 - 6 oz jars",
+     "UnitPrice": "22.0000",
+     "UnitsInStock": 53,
+     "UnitsOnOrder": 0,
+     "ReorderLevel": 0,
+     "Discontinued": false
+    },{
+     "ProductID": 9,
+     "ProductName": "adasdasdsd 9",
+     "SupplierID": 2,
+     "CategoryID": 2,
+     "QuantityPerUnit": "48 - 6 oz jars",
+     "UnitPrice": "22.0000",
+     "UnitsInStock": 53,
+     "UnitsOnOrder": 0,
+     "ReorderLevel": 0,
+     "Discontinued": false
+    },{
+     "ProductID": 10,
+     "ProductName": "adasdasdsd 10",
+     "SupplierID": 2,
+     "CategoryID": 2,
+     "QuantityPerUnit": "48 - 6 oz jars",
+     "UnitPrice": "22.0000",
+     "UnitsInStock": 53,
+     "UnitsOnOrder": 0,
+     "ReorderLevel": 0,
+     "Discontinued": false
+    },{
+     "ProductID": 11,
+     "ProductName": "adasdasdsd 11",
+     "SupplierID": 2,
+     "CategoryID": 2,
+     "QuantityPerUnit": "48 - 6 oz jars",
+     "UnitPrice": "22.0000",
+     "UnitsInStock": 53,
+     "UnitsOnOrder": 0,
+     "ReorderLevel": 0,
+     "Discontinued": false
+    },{
+     "ProductID": 12,
+     "ProductName": "adasdasdsd 12",
+     "SupplierID": 2,
+     "CategoryID": 2,
+     "QuantityPerUnit": "48 - 6 oz jars",
+     "UnitPrice": "22.0000",
+     "UnitsInStock": 53,
+     "UnitsOnOrder": 0,
+     "ReorderLevel": 0,
+     "Discontinued": false
+    },{
+     "ProductID": 13,
+     "ProductName": "QUQU 13",
+     "SupplierID": 2,
+     "CategoryID": 2,
+     "QuantityPerUnit": "48 - 6 oz jars",
+     "UnitPrice": "22.0000",
+     "UnitsInStock": 53,
+     "UnitsOnOrder": 0,
+     "ReorderLevel": 0,
+     "Discontinued": false
+    },{
+     "ProductID": 14,
+     "ProductName": "QUQU 14",
+     "SupplierID": 2,
+     "CategoryID": 2,
+     "QuantityPerUnit": "48 - 6 oz jars",
+     "UnitPrice": "22.0000",
+     "UnitsInStock": 53,
+     "UnitsOnOrder": 0,
+     "ReorderLevel": 0,
+     "Discontinued": false
     }]
   }

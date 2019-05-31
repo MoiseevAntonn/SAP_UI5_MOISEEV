@@ -1,5 +1,5 @@
 <mvc:View
-	controllerName="sap.ui.task.controller.Employees.EmployeeList"
+	controllerName="sap.ui.task.controller.DataBinding.Products"
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:custom="sap.ui.task.control">
@@ -12,28 +12,34 @@
 			<List
 				id="invoiceList"	
 				class="sapUiResponsiveMargin"
-				width="auto"
-				items="{
-					path:'invoice>/Output'
-					}">
+				width="auto">
 				
 				<headerToolbar> 
 					<Toolbar>
-						<Title text="{i18n>invoiceListTitle}"/>
+						<Title text="Products"/>
 						<ToolbarSpacer/>
-						
+						<custom:Paginator
+							id="testPaginator"/>
+						<Input
+							id="visibleCount"
+							type="Number"
+							width="10%"/>
+						<SearchField 
+							search=".onSearchProduct"
+							width="10%"/>
+							
 					</Toolbar>
 				</headerToolbar> 
 				
-				<items>
+				<!-- <items>
 					<StandardListItem
-						title="{invoice>FirstName} {invoice>LastName}"
+						title="{products>ProductName} {products>UnitPrice}"
 						iconDensityAware="false"
 						iconInset="false"
 						type="Navigation"
 						press=".onListItemPressed"/>
 
-				</items>
+				</items> -->
 			</List>
 		</content>
 	</Page>

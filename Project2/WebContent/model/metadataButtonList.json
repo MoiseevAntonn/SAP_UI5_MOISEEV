@@ -36,6 +36,17 @@
 		"label":"To dinamic table task",
 		"route":"appFactFuncTable",
 		"description":""
-	}
+	},
+	{
+		"id":"onNavToFactFuncTable",
+		"label":"To dinamic table task",
+		"route":"appFactFuncTable",
+		"description":""
+	}, {
+        "viewId":"onProductList",
+		"label" : "Products",
+		"route":"appProductList",
+		"description":""
+           }
 	]
 }

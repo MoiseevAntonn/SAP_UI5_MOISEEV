@@ -11,7 +11,18 @@
 		showNavButton="true"
 	    navButtonPress="onNavBack">
     	<content>
-    	
+    		<Button 
+    			id="tableParser"
+    			text="CopyData"
+				press=".parseDataFromTable"/>
+			<Button
+				id="tableInput"
+				text="ReadData"
+				press=".parseDataToTable"/>
+			<Input
+				id="bufferInput"
+				
+				/>
     		<IconTabBar
 				id="iconTabBar"
 				headerBackgroundDesign="Transparent"

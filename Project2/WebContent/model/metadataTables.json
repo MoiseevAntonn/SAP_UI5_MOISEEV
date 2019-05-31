@@ -13,13 +13,15 @@
 				},{
 				"label" : "Fio",
 				"type": "text",
-				"field": "FirstName_LastName",
+				
+				"field": "FirstName",
 				"width":"10%",
 				"hAlign":""
 				},{
-				"label" : "Adress",
+				"label" : "Address",
 				"type": "card",
-				"field": "Address_City_Country",
+				
+				"field": "Address",
 				"width":"",
 				"hAlign":""
 				},{
@@ -31,7 +33,7 @@
 				},{
 				"label" : "Name",
 				"type": "text",
-				"field": "FirstName",
+				"field": "LastName",
 				"width":"",
 				"hAlign":"",
 				"additionalType":[
